@@ -13,7 +13,7 @@ import { Headers } from "./component/headers/headers";
 
 export default function Home() {
   return (
-    <div>
+    <Fragment>
       {/*Add Content Here */}
       <Headers />
       <HomeView />
@@ -25,6 +25,6 @@ export default function Home() {
       <section id="blog" className="blog" />
       <ContactView />
       {/* Content Here */}
-    </div>
+    </Fragment>
   );
 }
