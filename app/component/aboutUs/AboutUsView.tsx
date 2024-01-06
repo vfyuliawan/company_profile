@@ -57,23 +57,52 @@ export const AboutUsView = () => {
       id="about-us"
       style={{ marginTop: 150, backgroundColor: WebTheme.cardGrey5 }}
     >
-      <div style={{ padding: 30, flexDirection: "column", display: "flex" }}>
-        <div className="section-header">
+      <div
+        style={{
+          paddingLeft: "30px",
+          paddingRight: "30px",
+          paddingTop: "50px",
+          paddingBottom: "50px",
+          flexDirection: "column",
+          display: "flex",
+        }}
+      >
+        <div className="section-header" style={{ marginTop: 20 }}>
           <h2>Tentang Kami</h2>
         </div>
         {/*/.section-header*/}
-        <p style={{ marginTop: 30, marginLeft: "20px" }}>
-          {paragraf[0]?.paragraf1}
-        </p>
-        <p style={{ marginTop: 20, marginLeft: "20px" }}>
-          {paragraf[0]?.paragraf2}
-        </p>
-        <p style={{ marginTop: 20, marginLeft: "20px" }}>
-          {paragraf[0]?.paragraf3}
-        </p>
-        <p style={{ marginTop: 20, marginLeft: "20px" }}>
-          {paragraf[0]?.paragraf4}
-        </p>
+        {paragraf[0]?.paragraf1 && (
+          <p style={{ marginTop: 30, marginLeft: "20px" }}>
+            {paragraf[0]?.paragraf1}
+          </p>
+        )}
+        {paragraf[0]?.paragraf2 && (
+          <p style={{ marginTop: 30, marginLeft: "20px" }}>
+            {paragraf[0]?.paragraf2}
+          </p>
+        )}
+        {paragraf[0]?.paragraf3 && (
+          <p style={{ marginTop: 30, marginLeft: "20px" }}>
+            {paragraf[0]?.paragraf3}
+          </p>
+        )}
+        {paragraf[0]?.paragraf4 && (
+          <p style={{ marginTop: 30, marginLeft: "20px" }}>
+            {paragraf[0]?.paragraf4}
+          </p>
+        )}
+        {paragraf[0]?.paragraf5 && (
+          <p style={{ marginTop: 30, marginLeft: "20px" }}>
+            {paragraf[0]?.paragraf5}
+          </p>
+        )}
+        {paragraf[0]?.paragraf6 && (
+          <p style={{ marginTop: 30, marginLeft: "20px" }}>
+            {paragraf[0]?.paragraf6}
+          </p>
+        )}
+
+
       </div>
     </section>
   );
