@@ -10,6 +10,7 @@ import { OurClientSays } from "./component/ourClientSays/OurClientSays";
 import { BrandView } from "./component/brand/BrandView";
 import { ContactView } from "./component/contact/ContactView";
 import { Headers } from "./component/headers/headers";
+import { AboutUsView } from "./component/aboutUs/AboutUsView";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       {/*Add Content Here */}
       <Headers />
       <HomeView />
+      <AboutUsView/>
       <ServiceVieiw />
       <CarsView />
       <FeatureCars />

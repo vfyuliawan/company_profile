@@ -1,4 +1,46 @@
+"use client";
+
+import { app } from "@/app/api/firebase";
+import {
+  CollectionReference,
+  DocumentData,
+  collection,
+  getDocs,
+  getFirestore,
+  query,
+} from "firebase/firestore";
+import { useEffect, useState } from "react";
+
 export const HomeView = () => {
+  const [desc, setDesc] = useState<DocumentData[]>([]);
+
+  const getDescription = async () => {
+    try {
+      const firestore = getFirestore(app);
+      const collectionRef: CollectionReference = collection(
+        firestore,
+        "headers"
+      );
+      const querySnapshot = await getDocs(query(collectionRef));
+
+      const documentsData = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      setDesc(documentsData);
+
+      console.log("Data fetched:", documentsData);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    getDescription();
+    return () => {};
+  }, []);
+
   return (
     <section id="home" className="welcome-hero">
       <div className="top-area">
@@ -60,15 +102,19 @@ export const HomeView = () => {
       </div>
       <div className="container">
         <div className="welcome-hero-txt">
-          <h2>get your desired car in resonable price</h2>
+          <h2>{desc[0]?.content1}</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          {desc[0]?.content2}
           </p>
-          <button className="welcome-btn">contact us</button>
+          <a href="#aboutus">
+          <button className="welcome-btn" onClick={() => {
+            
+          }}>Read More</button>
+          </a>
+
         </div>
       </div>
-      {searchContent()}
+      {/* {searchContent()} */}
     </section>
   );
 
