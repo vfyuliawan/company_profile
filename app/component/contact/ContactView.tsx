@@ -12,9 +12,10 @@ export const ContactView = () => {
   const [data, setData] = useState<DocumentData[]>([]);
   const [firstSet, setFirstSet] = useState<DocumentData[]>([]);
   const [secondSet, setSecondSet] = useState<DocumentData[]>([]);
+  const [firstData, setFirstData] = useState<DocumentData[]>([]);
 
   const fetchData = async () => {
-  console.log("runs");
+  // console.log("runs");
 
   try {
       // Use getFirestore to access Firestore functions
@@ -36,7 +37,29 @@ export const ContactView = () => {
       setFirstSet(firstSetData);
       setSecondSet(secondSetData);
 
-      console.log("Data fetched:", documentsData);
+
+
+      // console.log("Data fetched:", documentsData);
+
+      const contactsCollectionRef: CollectionReference = collection(
+        firestore,
+        "contacts"
+      );
+
+      const contactsCollectionQuerySnapshot = await getDocs(
+        query(contactsCollectionRef)
+      );
+  
+      const contactsCollectionDocumentsData = contactsCollectionQuerySnapshot.docs.map(
+        (doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        })
+      );
+  
+      const firstDataa = contactsCollectionDocumentsData.filter((item) => item.id === '1');
+      setFirstData(firstDataa);
+
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -52,27 +75,33 @@ export const ContactView = () => {
           <div className="footer-top">
             <div className="row">
               <div className="col-md-3 col-sm-6">
-                <div className="single-footer-widget">
+              {firstData.map((item, index) => (
+                <div key={`firstData-${index}`} className="single-footer-widget">
                   <div className="footer-logo">
-                    <a href="index.html">carvilla</a>
+                    <a href="index.html">{item.name}</a>
                   </div>
                   <p>
-                    Ased do eiusm tempor incidi ut labore et dolore magnaian aliqua. Ut enim ad minim veniam.
+                    Alamat: {item.alamat}
+                  </p>
+                  <p>
+                    cabang 1: {item.cabang1}
                   </p>
                   <div className="footer-contact">
-                    <p>info@themesine.com</p>
-                    <p>+1 (885) 2563154554</p>
+                    <p>{item.email}</p>
+                    <p>{item.phone}</p>
+                    <p>{item.phone2}</p>
                   </div>
                 </div>
+                ))}
               </div>
               <div className="col-md-2 col-sm-6">
                 <div className="single-footer-widget">
-                  <h2>about devloon</h2>
+                  <h2>about Syadida</h2>
                   <ul>
                     <li><a href="#">about us</a></li>
-                    <li><a href="#">career</a></li>
+                    {/* <li><a href="#">career</a></li> */}
                     <li><a href="#">terms <span> of service</span></a></li>
-                    <li><a href="#">privacy policy</a></li>
+                    {/* <li><a href="#">privacy policy</a></li> */}
                   </ul>
                 </div>
               </div>
@@ -83,24 +112,14 @@ export const ContactView = () => {
                     <div className="col-md-7 col-xs-6">
                     {firstSet.map((item, index) => (
                       <ul key={`firstSet-${index}`}>
-                        <li><a href="#">BMW</a></li>
-                        <li><a href="#">lamborghini</a></li>
-                        <li><a href="#">camaro</a></li>
-                        <li><a href="#">audi</a></li>
-                        <li><a href="#">infiniti</a></li>
-                        <li><a href="#">nissan</a></li>
+                        <li><a href="#">{item.name}</a></li>
                       </ul>
                     ))}
                     </div>
                     <div className="col-md-5 col-xs-6">
-                      {firstSet.map((item, index) => (
-                      <ul key={`firstSet-${index}`}>
-                        <li><a href="#">ferrari</a></li>
-                        <li><a href="#">porsche</a></li>
-                        <li><a href="#">land rover</a></li>
-                        <li><a href="#">aston martin</a></li>
-                        <li><a href="#">mersedes</a></li>
-                        <li><a href="#">opel</a></li>
+                      {secondSet.map((item, index) => (
+                      <ul key={`secondSet-${index}`}>
+                        <li><a href="#">{item.name}</a></li>
                       </ul>
                       ))}
                     </div>
@@ -131,7 +150,8 @@ export const ContactView = () => {
             <div className="row">
               <div className="col-sm-6">
                 <p>
-                  © copyright.designed and developed by <a href="https://www.themesine.com/">themesine</a>.
+                  {/* © copyright.designed and developed by <a href="https://www.themesine.com/">themesine</a>. */}
+                  © copyright. developed by Gavik.
                 </p>{/*/p*/}
               </div>
               <div className="col-sm-6">

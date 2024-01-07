@@ -31,7 +31,7 @@ export const HomeView = () => {
 
       setDesc(documentsData);
 
-      console.log("Data fetched:", documentsData);
+      // console.log("Data fetched:", documentsData);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
