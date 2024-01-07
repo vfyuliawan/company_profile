@@ -11,6 +11,8 @@ import { BrandView } from "./component/brand/BrandView";
 import { ContactView } from "./component/contact/ContactView";
 import { Headers } from "./component/headers/headers";
 import { AboutUsView } from "./component/aboutUs/AboutUsView";
+import { CrouselComponent } from "./component/crousel/CrouselView";
+import { CrouselTextComponent } from "./component/crouselText/CrouselTextView";
 
 export default function Home() {
   return (
@@ -20,11 +22,12 @@ export default function Home() {
       <HomeView />
       <AboutUsView/>
       <ServiceVieiw />
-      <CarsView />
       <FeatureCars />
-      <OurClientSays />
+      {/* <OurClientSays /> */}
       <BrandView />
       <section id="blog" className="blog" />
+      {/* <CarsView /> */}
+      <CrouselTextComponent/>
       <ContactView />
       {/* Content Here */}
     </Fragment>
