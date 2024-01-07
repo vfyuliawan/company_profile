@@ -41,7 +41,7 @@ export const AboutUsView = () => {
       setTextParagraf(paragrafArray);
       setParagraf(documentsData);
 
-      console.log("Data fetched:", paragrafArray);
+      // console.log("Data fetched:", paragrafArray);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
