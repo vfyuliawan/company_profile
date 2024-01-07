@@ -56,14 +56,19 @@ export const ContactView = () => {
           ...doc.data(),
         })
       );
+
+      console.log("cekDokument", contactsCollectionDocumentsData);
+      
   
-      const firstDataa = contactsCollectionDocumentsData.filter((item) => item.id === '1');
-      setFirstData(firstDataa);
+      setFirstData(contactsCollectionDocumentsData);
 
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
+
+  console.log("cekfirstData" , firstData);
+  
 
   useEffect(() => {
   fetchData();
@@ -75,24 +80,22 @@ export const ContactView = () => {
           <div className="footer-top">
             <div className="row">
               <div className="col-md-3 col-sm-6">
-              {firstData.map((item, index) => (
-                <div key={`firstData-${index}`} className="single-footer-widget">
+              <div key={`firstData-$12312 `} className="single-footer-widget">
                   <div className="footer-logo">
-                    <a href="index.html">{item.name}</a>
+                    <a href="index.html">{firstData[0]?.name}</a>
                   </div>
                   <p>
-                    Alamat: {item.alamat}
+                    Alamat: {firstData[0]?.alamat}
                   </p>
                   <p>
-                    cabang 1: {item.cabang1}
+                    cabang 1: {firstData[0]?.cabang1}
                   </p>
                   <div className="footer-contact">
-                    <p>{item.email}</p>
-                    <p>{item.phone}</p>
-                    <p>{item.phone2}</p>
+                    <p>{firstData[0]?.email}</p>
+                    <p>{firstData[0]?.phone}</p>
+                    <p>{firstData[0]?.phone2}</p>
                   </div>
                 </div>
-                ))}
               </div>
               <div className="col-md-2 col-sm-6">
                 <div className="single-footer-widget">

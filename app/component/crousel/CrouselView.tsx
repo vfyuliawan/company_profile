@@ -43,7 +43,7 @@ export const CrouselComponent = () => {
                   <p>{item.content2}</p>
                   <a href="ad#aboutus">
                     <button className="welcome-btn" onClick={() => {}}>
-                      Read More
+                      Contact Us
                     </button>
                   </a>
                 </div>
