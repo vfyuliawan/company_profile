@@ -97,6 +97,7 @@ export const HomeView = () => {
                     <span />
                   </a>
                 </div>
+
               </div>
               <div
                 className="collapse navbar-collapse menu-ui-design"
