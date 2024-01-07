@@ -1,10 +1,82 @@
+"use client";
+
+import { app } from "@/app/api/firebase";
+import {
+  CollectionReference,
+  DocumentData,
+  collection,
+  getDocs,
+  getFirestore,
+  query,
+} from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { Link } from "react-scroll";
+
 export const HomeView = () => {
+  const [desc, setDesc] = useState<DocumentData[]>([]);
+
+  const getDescription = async () => {
+    try {
+      const firestore = getFirestore(app);
+      const collectionRef: CollectionReference = collection(
+        firestore,
+        "headers"
+      );
+      const querySnapshot = await getDocs(query(collectionRef));
+
+      const documentsData = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      setDesc(documentsData);
+
+      console.log("Data fetched:", documentsData);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  const scrollBehavior = () => {
+    // Add smooth scroll behavior to all links with the 'scroll' class
+    const links = document.querySelectorAll(".scroll");
+
+    links.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        const targetId = link?.getAttribute("href")?.substring(1);
+        const targetElement = document.getElementById(targetId ?? "");
+
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 70, // Adjust for your header height
+            behavior: "smooth",
+          });
+        }
+      });
+    });
+  };
+
+  useEffect(() => {
+    // scrollBehavior()
+    getDescription();
+    return () => {};
+  }, []);
+
   return (
     <section id="home" className="welcome-hero">
       <div className="top-area">
         <div className="header-area">
           <nav
-            className="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy"
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              width: "100%",
+              backgroundColor: "black",
+            }}
+            className="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy scroll"
             data-minus-value-desktop={70}
             data-minus-value-mobile={55}
             data-speed={1000}
@@ -19,10 +91,13 @@ export const HomeView = () => {
                 >
                   <i className="fa fa-bars" />
                 </button>
-                <a className="navbar-brand" href="index.html">
-                  Syadida Rent
-                  <span />
-                </a>
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  <a className="navbar-brand" href="index.html">
+                    syadida
+                    <span />
+                  </a>
+                </div>
+
               </div>
               <div
                 className="collapse navbar-collapse menu-ui-design"
@@ -33,23 +108,89 @@ export const HomeView = () => {
                   data-in="fadeInDown"
                   data-out="fadeOutUp"
                 >
-                  <li className=" scroll active">
-                    <a href="#home">home</a>
+                  <li className=" scroll  ">
+                    <Link
+                      activeClass="active"
+                      to="home"
+                      spy={true}
+                      smooth={true}
+                      offset={-70} // Adjust for your header height
+                      duration={500}
+                    >
+                      Home
+                    </Link>
                   </li>
                   <li className="scroll">
-                    <a href="#service">service</a>
+                    <Link
+                      activeClass="active"
+                      to="about-us"
+                      spy={true}
+                      smooth={true}
+                      offset={-70} // Adjust for your header height
+                      duration={500}
+                    >
+                      About Us
+                    </Link>
                   </li>
                   <li className="scroll">
-                    <a href="#featured-cars">featured cars</a>
+                    <Link
+                      activeClass="active"
+                      to="service"
+                      spy={true}
+                      smooth={true}
+                      offset={-70} // Adjust for your header height
+                      duration={500}
+                    >
+                      Service
+                    </Link>
                   </li>
                   <li className="scroll">
-                    <a href="#new-cars">new cars</a>
+                    <Link
+                      activeClass="active"
+                      to="featured-cars"
+                      spy={true}
+                      smooth={true}
+                      offset={-70} // Adjust for your header height
+                      duration={500}
+                    >
+                      featured
+                    </Link>
                   </li>
                   <li className="scroll">
-                    <a href="#brand">brands</a>
+                    <Link
+                      activeClass="active"
+                      to="new-cars"
+                      spy={true}
+                      smooth={true}
+                      offset={-70} // Adjust for your header height
+                      duration={500}
+                    >
+                      new cars
+                    </Link>
                   </li>
                   <li className="scroll">
-                    <a href="#contact">contact</a>
+                    <Link
+                      activeClass="active"
+                      to="brand"
+                      spy={true}
+                      smooth={true}
+                      offset={-70} // Adjust for your header height
+                      duration={500}
+                    >
+                      brands{" "}
+                    </Link>
+                  </li>
+                  <li className="scroll">
+                    <Link
+                      activeClass="active"
+                      to="contact"
+                      spy={true}
+                      smooth={true}
+                      offset={-70} // Adjust for your header height
+                      duration={500}
+                    >
+                      contact{" "}
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -60,15 +201,16 @@ export const HomeView = () => {
       </div>
       <div className="container">
         <div className="welcome-hero-txt">
-          <h2>get your desired car in resonable price</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-          <button className="welcome-btn">contact us</button>
+          <h2>{desc[0]?.content1}</h2>
+          <p>{desc[0]?.content2}</p>
+          <a href="#aboutus">
+            <button className="welcome-btn" onClick={() => {}}>
+              Read More
+            </button>
+          </a>
         </div>
       </div>
-      {searchContent()}
+      {/* {searchContent()} */}
     </section>
   );
 
