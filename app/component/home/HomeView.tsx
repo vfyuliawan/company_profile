@@ -66,7 +66,7 @@ export const HomeView = () => {
     getCars();
     getDescription();
     return () => {};
-  }, []);
+  }, [getCars]);
 
   return (
     <div>
@@ -242,7 +242,7 @@ export const HomeView = () => {
                         - Pilih -{" "}
                       </option>
                       {cars.map((item: CarInterFace, index: number) => {
-                        return <option value={item.id}> {item.name}</option>;
+                        return <option key={index} value={item.id}> {item.name}</option>;
                       })}
                     </select>
                     {/* /.select*/}
