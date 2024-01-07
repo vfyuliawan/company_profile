@@ -237,10 +237,12 @@ export const HomeView = () => {
                         getHarga(e.target.value);
                       }}
                     >
-                      <option value="" selected> - Pilih -  </option>
+                      <option value="" selected>
+                        {" "}
+                        - Pilih -{" "}
+                      </option>
                       {cars.map((item: CarInterFace, index: number) => {
-                        return (
-                        <option value={item.id}> {item.name}</option>);
+                        return <option value={item.id}> {item.name}</option>;
                       })}
                     </select>
                     {/* /.select*/}
@@ -252,7 +254,7 @@ export const HomeView = () => {
                   <div className="model-select-icon">
                     <select className="form-control" disabled>
                       <option value="default">{price}</option>
-                      </select>
+                    </select>
                     {/* /.select*/}
                   </div>
                   {/* /.model-select-icon */}
@@ -267,6 +269,26 @@ export const HomeView = () => {
               </div>
             </div>
           </div>
+        </div>
+        <div id="scroll-Top">
+          <div className="return-to-top">
+            <i
+              className="fa fa-angle-up "
+              id="scroll-top"
+              data-toggle="tooltip"
+              data-placement="top"              
+              data-original-title="Back to Top"
+              aria-hidden="true"
+            />
+          </div>
+        </div>
+        <div>
+          <a href="https://wa.me/082133438083" className="floating-button1">
+            <i className="fa fa-phone" /> WhatsApp 1
+          </a>
+          <a href="https://wa.me/081221951242" className="floating-button2">
+            <i className="fa fa-phone" /> WhatsApp 2
+          </a>
         </div>
       </div>
     );
