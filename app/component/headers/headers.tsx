@@ -16,7 +16,7 @@ export const Headers = () => {
         rel="stylesheet"
       />
       {/* title of site */}
-      <title>CarVilla</title>
+      <title>Syadida Rent</title>
       {/* For favicon png */}
       <link
         rel="shortcut icon"

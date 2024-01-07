@@ -20,7 +20,7 @@ export const HomeView = () => {
                   <i className="fa fa-bars" />
                 </button>
                 <a className="navbar-brand" href="index.html">
-                  carvilla
+                  Syadida Rent
                   <span />
                 </a>
               </div>

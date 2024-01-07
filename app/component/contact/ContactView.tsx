@@ -1,4 +1,51 @@
+"use client";
+
+import React, { useEffect, useState } from "react";
+import { CollectionReference, getDocs, query } from "@firebase/firestore";
+import { DocumentData, QueryDocumentSnapshot, collection, getFirestore } from "firebase/firestore";
+import { app } from "@/app/api/firebase";
+
 export const ContactView = () => {
+
+  
+
+  const [data, setData] = useState<DocumentData[]>([]);
+  const [firstSet, setFirstSet] = useState<DocumentData[]>([]);
+  const [secondSet, setSecondSet] = useState<DocumentData[]>([]);
+
+  const fetchData = async () => {
+  console.log("runs");
+
+  try {
+      // Use getFirestore to access Firestore functions
+      const firestore = getFirestore(app);
+      const collectionRef: CollectionReference = collection(
+        firestore,
+        "carsId"
+      );
+      const querySnapshot = await getDocs(query(collectionRef));
+
+      const documentsData = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      setData(documentsData);
+      const firstSetData = documentsData.filter((item) => item.id >= '1' && item.id <= '4');
+      const secondSetData = documentsData.filter((item) => item.id >= '5' && item.id <= '8');
+      setFirstSet(firstSetData);
+      setSecondSet(secondSetData);
+
+      console.log("Data fetched:", documentsData);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+  fetchData();
+  }, []); 
+
     return (
         <footer id="contact" className="contact">
         <div className="container">
@@ -34,7 +81,8 @@ export const ContactView = () => {
                   <h2>top brands</h2>
                   <div className="row">
                     <div className="col-md-7 col-xs-6">
-                      <ul>
+                    {firstSet.map((item, index) => (
+                      <ul key={`firstSet-${index}`}>
                         <li><a href="#">BMW</a></li>
                         <li><a href="#">lamborghini</a></li>
                         <li><a href="#">camaro</a></li>
@@ -42,9 +90,11 @@ export const ContactView = () => {
                         <li><a href="#">infiniti</a></li>
                         <li><a href="#">nissan</a></li>
                       </ul>
+                    ))}
                     </div>
                     <div className="col-md-5 col-xs-6">
-                      <ul>
+                      {firstSet.map((item, index) => (
+                      <ul key={`firstSet-${index}`}>
                         <li><a href="#">ferrari</a></li>
                         <li><a href="#">porsche</a></li>
                         <li><a href="#">land rover</a></li>
@@ -52,6 +102,7 @@ export const ContactView = () => {
                         <li><a href="#">mersedes</a></li>
                         <li><a href="#">opel</a></li>
                       </ul>
+                      ))}
                     </div>
                   </div>
                 </div>
