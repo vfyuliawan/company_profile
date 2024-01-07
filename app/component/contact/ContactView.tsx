@@ -150,7 +150,8 @@ export const ContactView = () => {
             <div className="row">
               <div className="col-sm-6">
                 <p>
-                  © copyright.designed and developed by <a href="https://www.themesine.com/">themesine</a>.
+                  {/* © copyright.designed and developed by <a href="https://www.themesine.com/">themesine</a>. */}
+                  © copyright. developed by Gavik.
                 </p>{/*/p*/}
               </div>
               <div className="col-sm-6">
