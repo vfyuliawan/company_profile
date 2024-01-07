@@ -96,12 +96,12 @@ export const ContactView = () => {
               </div>
               <div className="col-md-2 col-sm-6">
                 <div className="single-footer-widget">
-                  <h2>about devloon</h2>
+                  <h2>about Syadida</h2>
                   <ul>
                     <li><a href="#">about us</a></li>
-                    <li><a href="#">career</a></li>
+                    {/* <li><a href="#">career</a></li> */}
                     <li><a href="#">terms <span> of service</span></a></li>
-                    <li><a href="#">privacy policy</a></li>
+                    {/* <li><a href="#">privacy policy</a></li> */}
                   </ul>
                 </div>
               </div>
