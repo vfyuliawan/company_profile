@@ -12,6 +12,7 @@ export const D_AboutUsView = () => {
     paragrafAdd,
     setParagrafAdd,
   } = D_AboutUsViewModel();
+
   return (
     <div className="row" style={{ marginTop: "30px" }}>
       <div
@@ -40,9 +41,9 @@ export const D_AboutUsView = () => {
           <button
             type="button"
             className="btn btn-primary btn-lg"
-            style={{ display: "flex", alignItems: "center" }}
+            style={{ display: "flex", alignItems: "center", height: "40px" }}
             onClick={() => {
-                editParagraf(paragrafAdd)
+              editParagraf(paragrafAdd);
             }}
           >
             <svg
@@ -60,7 +61,7 @@ export const D_AboutUsView = () => {
               />
             </svg>
             {"      "}
-            Sync
+            <text style={{ marginLeft: "8px" }}>RE-SYNC</text>
           </button>
         </div>
         <div className="mb-3" style={{ marginTop: "20px" }}>
@@ -79,7 +80,6 @@ export const D_AboutUsView = () => {
                 };
                 return updatedParagrafAdd;
               });
-
             }}
             id="exampleFormControlTextarea1"
             rows={6}

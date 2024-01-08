@@ -102,8 +102,6 @@ export const AboutUsView = () => {
             {paragraf[0]?.paragraf6}
           </p>
         )}
-
-
       </div>
     </section>
   );

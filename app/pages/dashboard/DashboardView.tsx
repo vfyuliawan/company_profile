@@ -13,7 +13,7 @@ export const DashboardView = () => {
         <div className="row display-table-row">
           <div
             className="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box"
-            style={{height:2000, }}
+            style={{height:2000,}}
             id="navigation"
           >
             <div className="logo">
@@ -30,7 +30,7 @@ export const DashboardView = () => {
                 />
               </a>
             </div>
-            <div className="navi">
+            <div className="navi"  >
               <ul>
                 <li className="active">
                   <a href="#">
