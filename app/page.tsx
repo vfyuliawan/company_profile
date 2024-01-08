@@ -1,6 +1,4 @@
 import Image from "next/image";
-import styles from "./page.module.css";
-import { Fragment, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { HomeView } from "./component/home/HomeView";
 import { ServiceVieiw } from "./component/service/ServiceView";
@@ -13,10 +11,11 @@ import { Headers } from "./component/headers/headers";
 import { AboutUsView } from "./component/aboutUs/AboutUsView";
 import { CrouselComponent } from "./component/crousel/CrouselView";
 import { CrouselTextComponent } from "./component/crouselText/CrouselTextView";
+import React from "react";
 
 export default function Home() {
   return (
-    <Fragment>
+    <>
       {/*Add Content Here */}
       <Headers />
       <HomeView />
@@ -30,6 +29,6 @@ export default function Home() {
       <CrouselTextComponent/>
       <ContactView />
       {/* Content Here */}
-    </Fragment>
+    </>
   );
 }

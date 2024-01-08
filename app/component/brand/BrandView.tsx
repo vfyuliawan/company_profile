@@ -1,5 +1,10 @@
+import React from "react";
+
 export const BrandView = () => {
+  console.log();
+  
     return(
+
         <section id="brand" className="brand">
         <div className="container">
           <div className="brand-area">
