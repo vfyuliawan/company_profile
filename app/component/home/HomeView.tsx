@@ -40,27 +40,6 @@ export const HomeView = () => {
     }
   };
 
-  const scrollBehavior = () => {
-    // Add smooth scroll behavior to all links with the 'scroll' class
-    const links = document.querySelectorAll(".scroll");
-
-    links.forEach((link) => {
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
-
-        const targetId = link?.getAttribute("href")?.substring(1);
-        const targetElement = document.getElementById(targetId ?? "");
-
-        if (targetElement) {
-          window.scrollTo({
-            top: targetElement.offsetTop - 70, // Adjust for your header height
-            behavior: "smooth",
-          });
-        }
-      });
-    });
-  };
-
   useEffect(() => {
     // scrollBehavior()
     getCars();
@@ -242,7 +221,7 @@ export const HomeView = () => {
                         - Pilih -{" "}
                       </option>
                       {cars.map((item: CarInterFace, index: number) => {
-                        return <option value={item.id}> {item.name}</option>;
+                        return <option key={index} value={item.id}> {item.name}</option>;
                       })}
                     </select>
                     {/* /.select*/}

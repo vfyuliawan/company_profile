@@ -10,6 +10,7 @@ import {
   getFirestore,
   query,
 } from "firebase/firestore";
+import React from "react";
 import { useEffect, useState } from "react";
 
 interface ParagrafInterface {
@@ -23,7 +24,7 @@ export const AboutUsView = () => {
   const [paragraf, setParagraf] = useState<DocumentData[]>([]);
   const [textParagraf, setTextParagraf] = useState<any>();
 
-  const getParagraf = async () => {
+   const getParagraf = async () => {
     try {
       const firestore = getFirestore(app);
       const collectionRef: CollectionReference = collection(
