@@ -1,7 +1,10 @@
 "use client";
 
 import { WebTheme } from "@/app/theme/webTheme";
+
+import ModalBootstrap from "./widget/modal/ModalBootstrap";
 import { D_AboutUsView } from "./componentDashboard/D_AboutUs/D_AboutUsView";
+import { D_CarsVieiw } from "./componentDashboard/D_Cars/D_CarsView";
 import { D_HeadLink } from "./componentDashboard/D_HeadLink/D_HeadLink";
 
 export const DashboardView = () => {
@@ -19,7 +22,7 @@ export const DashboardView = () => {
             <div className="logo">
               <a href="home.html">
                 <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9H6a5sfL9GFv6wasVfEfMd1MCuOXBrnndLyDCxhHn2g&s"
+                  src="https://img.freepik.com/free-vector/golden-bird-logo-design_1195-336.jpg"
                   alt="merkery_logo"
                   className="hidden-xs hidden-sm"
                 />
@@ -64,17 +67,6 @@ export const DashboardView = () => {
                 </div>
                 <nav className="navbar navbar-dark bg-dark">
                   <div className="container-fluid">
-                    <button
-                      className="navbar-toggler"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#navbarToggleExternalContent"
-                      aria-controls="navbarToggleExternalContent"
-                      aria-expanded="false"
-                      aria-label="Toggle navigation"
-                    >
-                      <span className="navbar-toggler-icon" />
-                    </button>
                   </div>
                 </nav>
               </div>
@@ -82,7 +74,7 @@ export const DashboardView = () => {
               {/* Content Here */}
 
               <D_AboutUsView />
-
+              <D_CarsVieiw/>    
               
               {/* Content Here */}
             </div>
