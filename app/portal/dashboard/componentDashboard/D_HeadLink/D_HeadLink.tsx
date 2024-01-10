@@ -1,6 +1,8 @@
 export const D_HeadLink = () => {
   return (
     <>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+
       <link rel="stylesheet" href="../../../assets/css/styleDashboard.css" />
       <link
         href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"

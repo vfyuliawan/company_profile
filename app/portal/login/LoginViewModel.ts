@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 export function LoginViewModel() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [cekLogin, setCekLogin] = useState<User | null >(null);
+  const [cekLogin, setCekLogin] = useState<User | null >();
 
   const postLogin = async (props: LoginInterface) => {
     console.log("cekInput", props.email, props.password);
