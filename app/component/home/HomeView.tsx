@@ -45,7 +45,7 @@ export const HomeView = () => {
     getCars();
     getDescription();
     return () => {};
-  }, []);
+  }, [getCars]);
 
   return (
     <div>
