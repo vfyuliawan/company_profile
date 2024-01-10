@@ -112,10 +112,11 @@ class Service {
   }
 
   async POST(props: PostInterface): Promise<boolean | null> {
-    console.log(`POST data ${props.collectionName}....`);
-    console.log("Request body", {
-      collectionName: props.collectionName,
-      dataToPost: props.dataToPost,
+    console.log(`POST data ${props.collectionName}....`,{
+        "Request body": {
+            collectionName: props.collectionName,
+            dataToPost: props.dataToPost,
+          }
     });
     if (props.dataToPost.length !== 0 && props.collectionName !== "") {
       try {
