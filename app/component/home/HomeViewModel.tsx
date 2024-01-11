@@ -44,7 +44,6 @@ export function HomeViewModel() {
     }
   };
 
-  console.log("cekCaars", cars);
 
   return {
     cars,

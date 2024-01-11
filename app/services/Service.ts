@@ -73,14 +73,21 @@ class Service {
           ...doc.data(),
         };
       }) as DocumentData[];
-      if (result.length !== 0) {
+      if (result?.length !== 0 || result !==null) {
         console.log(`Get data ${props.collectionName} Berhasil...`);
         console.log("Response Body", result);
         return result;
+      }else{
+        console.log("Gagal");
       }
       return;
     } catch (error) {
       console.log("Error Get Dat", error);
+      Swal.fire({
+        title: "SERVER?",
+        text: "Sayangnya Server Sedang Error?",
+        icon: "question"
+      });
       return null;
     }
   }

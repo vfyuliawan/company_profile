@@ -16,7 +16,7 @@ import {
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import { ModalForm } from "../../widget/modal/ModalForm";
+import { ModalForm } from "../../../../widget/modal/ModalForm";
 import ReactDOM from "react-dom/server";
 import ReactDOMServer from "react-dom/server";
 

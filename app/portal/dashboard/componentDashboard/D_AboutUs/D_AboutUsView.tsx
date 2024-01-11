@@ -4,7 +4,11 @@ import { WebTheme } from "@/app/theme/webTheme";
 import { D_AboutUsViewModel } from "./D_AboutUsViewModel";
 import Swal from "sweetalert2";
 
-export const D_AboutUsView = () => {
+interface D_AboutUsViewInterface{
+  id: string
+}
+
+export const D_AboutUsView = (props: D_AboutUsViewInterface) => {
   const {
     getParagraf,
     paragrafList,
@@ -17,7 +21,7 @@ export const D_AboutUsView = () => {
   } = D_AboutUsViewModel();
 
   return (
-    <div className="row" style={{ marginTop: "30px" }}>
+    <div id={props.id} className="row" style={{ marginTop: "30px" }}>
       <div
         className=""
         style={{
@@ -44,7 +48,7 @@ export const D_AboutUsView = () => {
                   confirmButtonColor: "#3085d6",
                   cancelButtonColor: "#d33",
                   confirmButtonText: "Yes",
-                }).then((result) => {
+                }).then((result) => { 
                   if (result.isConfirmed) {
                     editParagraf();
                   }

@@ -17,6 +17,7 @@ import { HomeViewModel } from "./HomeViewModel";
 export const HomeView = () => {
   const [desc, setDesc] = useState<DocumentData[]>([]);
   const { cars, getCars, getHarga, price } = HomeViewModel();
+  const [position, setPosition] = useState(0);
 
   const getDescription = async () => {
     try {
@@ -33,31 +34,37 @@ export const HomeView = () => {
       }));
 
       setDesc(documentsData);
-
-      // console.log("Data fetched:", documentsData);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
 
+  const handleScroll = () => {
+    console.log("Scrolled:", window.scrollY);
+    setPosition(window.scrollY);
+  };
+
   useEffect(() => {
-    // scrollBehavior()
     getCars();
+    window.addEventListener("scroll", handleScroll);
     getDescription();
-    return () => {};
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, [getCars]);
 
   return (
-    <div>
+    <>
       <section id="home" className="welcome-hero">
         <div className="top-area">
-          <div className="header-area">
+          <div className="header-area" id="nav-up">
             <nav
               style={{
                 position: "fixed",
                 top: 0,
                 left: 0,
                 width: "100%",
+                opacity: position === 0 ? "12%" : "100%",
                 backgroundColor: "black",
               }}
               className="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy scroll"
@@ -193,7 +200,7 @@ export const HomeView = () => {
         </div>
         {searchContent()}
       </section>
-    </div>
+    </>
   );
 
   function searchContent() {
@@ -221,7 +228,12 @@ export const HomeView = () => {
                         - Pilih -{" "}
                       </option>
                       {cars.map((item: CarInterFace, index: number) => {
-                        return <option key={index} value={item.id}> {item.name}</option>;
+                        return (
+                          <option key={index} value={item.id}>
+                            {" "}
+                            {item.name}
+                          </option>
+                        );
                       })}
                     </select>
                     {/* /.select*/}
@@ -255,7 +267,7 @@ export const HomeView = () => {
               className="fa fa-angle-up "
               id="scroll-top"
               data-toggle="tooltip"
-              data-placement="top"              
+              data-placement="top"
               data-original-title="Back to Top"
               aria-hidden="true"
             />
