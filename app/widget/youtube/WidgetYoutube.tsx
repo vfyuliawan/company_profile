@@ -1,17 +1,28 @@
-import YouTube, { YouTubePlayer } from 'react-youtube';
+import YouTube, { YouTubePlayer } from "react-youtube";
 
-interface WidgetYoutube{
-    height: string
-    width: string
-    vidId: string
+interface WidgetYoutube {
+  height?: string;
+  width?: string;
+  vidId: string;
 }
 
 const WidgetYoutube = (props: WidgetYoutube) => {
-    return ( 
-        <div>
-            <YouTube style={{height:props.height , width:props.width}} videoId={props?.vidId?.split("?v=")[1] ?? ""} />
-        </div>
-     );
-}
- 
+  const opts = {
+    height: "280",
+    width: "550",
+    playerVars: {
+      autoplay: 0,
+    },
+  };
+  return (
+    <div>
+      <YouTube
+       
+        videoId={props?.vidId?.split("?v=")[1] ?? ""}
+        opts={opts}
+      />
+    </div>
+  );
+};
+
 export default WidgetYoutube;

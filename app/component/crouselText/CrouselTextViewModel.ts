@@ -9,7 +9,7 @@ export function CrouselViewModel() {
         const result = (await Service.GET({
             collectionName: "term&condition"
         })) as ResultTextInterfaceData[]
-        if (result.length > 0) {
+        if (result?.length > 0) {
             setHeaders(result)
         }
     };

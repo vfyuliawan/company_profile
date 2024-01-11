@@ -10,11 +10,22 @@ import WidgetYoutube from "../../../../widget/youtube/WidgetYoutube";
 import WidgetTextInputButton from "../../../../widget/textInputButton/WidgetTextInputButton";
 import InputWithPasteButton from "../../../../widget/textInputButton/WidgetTextInputButton";
 import WidgetTextArea from "../../../../widget/textArea/WidgetTextArea";
+import ModalBootstrap from "@/app/widget/modal/ModalBootstrap";
+import WidgetTextInput from "../../../../widget/textInput/WidgetTextInput";
+import Swal from "sweetalert2";
 
 function D_YoutubeView() {
   const vid = [1, 2];
-  const { progress, youtubeList, setprogress, setyoutubeList, editYoutube } =
-    D_YoutubeViewModel();
+  const {
+    progress,
+    youtubeList,
+    setprogress,
+    setyoutubeList,
+    editYoutube,
+    addYoutube,
+    setAddYoutube,
+    postNewYoutube,
+  } = D_YoutubeViewModel();
   return (
     <div className="row" style={{ marginTop: "30px" }}>
       <div
@@ -29,26 +40,69 @@ function D_YoutubeView() {
             <h2>Youtube</h2>
           </div>
           <div className="col-md-6 d-flex justify-content-end align-items-center">
-            <ButtonWidget
-              class={"btn btn-primary"}
-              size={"btn-lg"}
-              icon={true}
-              iconSvg={
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width={16}
-                  height={16}
-                  fill="currentColor"
-                  className="bi bi-plus-square"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
-                  <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
-                </svg>
+            <ModalBootstrap
+              title={"Add Youtube List"}
+              childern={
+                <>
+                  <WidgetTextInput
+                    label={"Url"}
+                    id={"urlId"}
+                    type={"text"}
+                    disable={false}
+                    onChange={function (event: any): void {
+                      setAddYoutube((prevState) => {
+                        return {
+                          ...prevState,
+                          videoId: event?.target?.value,
+                        };
+                      });
+                    }}
+                  />
+                  <WidgetSizeBox bottom="2px" raight="2px" />
+                  <WidgetTextArea
+                    label={"Deskripsi"}
+                    id={"descId"}
+                    type={"text"}
+                    disable={false}
+                    row={3}
+                    onChange={function (event: any): void {
+                      setAddYoutube(
+                        (prevState) =>
+                          ({
+                            ...prevState,
+                            desc: event?.target.value,
+                          } as YoutubeInterface)
+                      );
+                    }}
+                  />
+                </>
               }
-              type={"button"}
-              text={"ADD"}
-              onClick={function (): void {}}
+              onSave={function (): void {
+                setprogress(!progress);
+                postNewYoutube();
+              }}
+              button={{
+                type: "button",
+                class: "btn btn-primary",
+                size: "btn-lg",
+                text: "Add",
+                disable: false,
+                icon: true,
+                iconSvg: (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width={16}
+                    height={16}
+                    fill="currentColor"
+                    className="bi bi-plus-square"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                  </svg>
+                ),
+                childern: undefined,
+              }}
             />
             <WidgetSizeBox top={""} bottom={""} left={"3px"} raight={"3px"} />
             <ButtonWidget
@@ -73,7 +127,15 @@ function D_YoutubeView() {
               }
               type={"button"}
               text={"RE-SYNC"}
-              onClick={function (): void {}}
+              onClick={function (): void {
+                Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: "Syncronasi Berhasil",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+              }}
             />
           </div>
         </div>
@@ -81,10 +143,10 @@ function D_YoutubeView() {
           {youtubeList.map((item: YoutubeInterface, index: number) => (
             <div
               key={"dfasdhga" + index}
-              className="col-md-12 col-lg-6 d-flex justify-content-center"
+              className="col-md-12 col-lg-6 d-flex justify-content-center mt-5"
             >
               <div>
-                <WidgetYoutube height="300" width="125" vidId={item.videoId} />
+                <WidgetYoutube vidId={item.videoId} />
                 <WidgetTextInputButton
                   label={"Video Url"}
                   id={"123"}
@@ -123,7 +185,7 @@ function D_YoutubeView() {
                   onChange={function (
                     event: ChangeEvent<HTMLTextAreaElement>
                   ): void {
-                    setyoutubeList((prevState) => { 
+                    setyoutubeList((prevState) => {
                       const update = [...prevState];
                       update[index].desc = event?.target?.value;
                       return update;

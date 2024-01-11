@@ -79,16 +79,16 @@ export const D_CarsVieiw = () => {
           </div>
         </div>
 
-        
+
         <div className="row mt-3">
           {listCars?.map(
             (item: CarsListInterface | DocumentData, index: number) => {
               return (
                 <div
                   key={index + "dfasdhga"}
-                  className="col-sm-4 col-md-6 col-lg-4 col-sm-12 mt-5"
+                  className="col-sm-4 col-md-6 col-lg-3 col-sm-12 mt-5"
                 >
-                  <div className="card" style={{ position: "relative" }}>
+                  <div className="card" style={{ position: "relative",  height: '410px' }}>
                     <button
                       type="button"
                       onClick={() => {
@@ -105,7 +105,6 @@ export const D_CarsVieiw = () => {
                     <img
                       className="card-img-top"
                       src={item.picture}
-                      height={180}
                       alt="Card image cap"
                     />
                     <div className="card-body">
@@ -204,11 +203,10 @@ export const D_CarsVieiw = () => {
                             }}
                           />
                         </div>
+                        
                       </div>
-                      <div className="row">
-                        <div className="col-md-12">
-                          <button
-                            style={{ width: "100%" }}
+                      <button
+                            style={{ width: "90%", position:'absolute', bottom: 2, left:8, }}
                             type="button"
                             className="btn btn-warning btn-lg"
                             onClick={() => {
@@ -245,6 +243,46 @@ export const D_CarsVieiw = () => {
                             </svg>
                             <span style={{ marginLeft: "8px" }}>Simpan</span>
                           </button>
+                      <div className="row">
+                        <div className="col-md-12">
+                          {/* <button
+                            style={{ width: "100%", position:'absolute', bottom: -50, left: 0 }}
+                            type="button"
+                            className="btn btn-warning btn-lg"
+                            onClick={() => {
+                              Swal.fire({
+                                title: "Are you sure?",
+                                text: "Will Change This Data",
+                                icon: "warning",
+                                showCancelButton: true,
+                                confirmButtonColor: "#3085d6",
+                                cancelButtonColor: "#d33",
+                                confirmButtonText: "Yes",
+                              }).then((result) => {
+                                if (result.isConfirmed) {
+                                  editListCars(item.idDoc, index);
+                                  Swal.fire({
+                                    title: "Success!",
+                                    text: "Your file has been updated.",
+                                    icon: "success",
+                                  });
+                                }
+                              });
+                            }}
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width={16}
+                              height={16}
+                              fill="currentColor"
+                              className="bi bi-floppy-fill"
+                              viewBox="0 0 16 16"
+                            >
+                              <path d="M0 1.5A1.5 1.5 0 0 1 1.5 0H3v5.5A1.5 1.5 0 0 0 4.5 7h7A1.5 1.5 0 0 0 13 5.5V0h.086a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5H14v-5.5A1.5 1.5 0 0 0 12.5 9h-9A1.5 1.5 0 0 0 2 10.5V16h-.5A1.5 1.5 0 0 1 0 14.5z" />
+                              <path d="M3 16h10v-5.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5zm9-16H4v5.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5zM9 1h2v4H9z" />
+                            </svg>
+                            <span style={{ marginLeft: "8px" }}>Simpan</span>
+                          </button> */}
                         </div>
                       </div>
                     </div>
