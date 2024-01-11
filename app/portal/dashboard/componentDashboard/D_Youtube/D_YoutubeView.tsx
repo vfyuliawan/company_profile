@@ -1,15 +1,15 @@
 "use client";
 
 import { WebTheme } from "@/app/theme/webTheme";
-import TextInputWidget from "../../widget/textInput/WidgetTextInput";
-import ButtonWidget from "../../widget/button/ButtonWidgte";
+import TextInputWidget from "../../../../widget/textInput/WidgetTextInput";
+import ButtonWidget from "../../../../widget/button/ButtonWidgte";
 import { D_YoutubeViewModel } from "./D_YoutubeViewModel";
 import { ChangeEvent, ClipboardEvent } from "react";
-import WidgetSizeBox from "../../widget/sizedBox/SizedBoxWidget";
-import WidgetYoutube from "../../widget/youtube/WidgetYoutube";
-import WidgetTextInputButton from "../../widget/textInputButton/WidgetTextInputButton";
-import InputWithPasteButton from "../../widget/textInputButton/WidgetTextInputButton";
-import WidgetTextArea from "../../widget/textArea/WidgetTextArea";
+import WidgetSizeBox from "../../../../widget/sizedBox/SizedBoxWidget";
+import WidgetYoutube from "../../../../widget/youtube/WidgetYoutube";
+import WidgetTextInputButton from "../../../../widget/textInputButton/WidgetTextInputButton";
+import InputWithPasteButton from "../../../../widget/textInputButton/WidgetTextInputButton";
+import WidgetTextArea from "../../../../widget/textArea/WidgetTextArea";
 
 function D_YoutubeView() {
   const vid = [1, 2];

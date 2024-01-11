@@ -2,13 +2,13 @@
 
 import { WebTheme } from "@/app/theme/webTheme";
 
-import ModalBootstrap from "./widget/modal/ModalBootstrap";
+import ModalBootstrap from "../../widget/modal/ModalBootstrap";
 import { D_AboutUsView } from "./componentDashboard/D_AboutUs/D_AboutUsView";
 import { D_CarsVieiw } from "./componentDashboard/D_Cars/D_CarsView";
 import { D_HeadLink } from "./componentDashboard/D_HeadLink/D_HeadLink";
 import D_YoutubeView from "./componentDashboard/D_Youtube/D_YoutubeView";
 import D_NavBarView from "./componentDashboard/D_Navbar/D_NavBarView";
-import ButtonWidget from "./widget/button/ButtonWidgte";
+import ButtonWidget from "../../widget/button/ButtonWidgte";
 import { Link } from "react-scroll";
 
 export const DashboardView = () => {
