@@ -48,8 +48,8 @@ export const HomeView = () => {
   }, [getCars]);
 
   return (
-    <div>
-      <section id="home" className="welcome-hero">
+    <>
+      <section id="home" className="welcome-hero" >
         <div className="top-area">
           <div className="header-area">
             <nav
@@ -193,7 +193,7 @@ export const HomeView = () => {
         </div>
         {searchContent()}
       </section>
-    </div>
+    </>
   );
 
   function searchContent() {

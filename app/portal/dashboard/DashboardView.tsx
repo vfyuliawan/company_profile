@@ -6,17 +6,22 @@ import ModalBootstrap from "./widget/modal/ModalBootstrap";
 import { D_AboutUsView } from "./componentDashboard/D_AboutUs/D_AboutUsView";
 import { D_CarsVieiw } from "./componentDashboard/D_Cars/D_CarsView";
 import { D_HeadLink } from "./componentDashboard/D_HeadLink/D_HeadLink";
+import D_YoutubeView from "./componentDashboard/D_Youtube/D_YoutubeView";
+import D_NavBarView from "./componentDashboard/D_Navbar/D_NavBarView";
+import ButtonWidget from "./widget/button/ButtonWidgte";
+import { Link } from "react-scroll";
 
 export const DashboardView = () => {
+  const link = ["About Us", "List Car", "Youtube", "fasdfasd"];
   return (
     <div>
       <D_HeadLink />
-      
+
       <div className="container-fluid display-table">
         <div className="row display-table-row">
           <div
             className="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box"
-            style={{height:2000,}}
+            style={{ height: 2000 }}
             id="navigation"
           >
             <div className="logo">
@@ -33,7 +38,7 @@ export const DashboardView = () => {
                 />
               </a>
             </div>
-            <div className="navi"  >
+            <div className="navi">
               <ul>
                 <li className="active">
                   <a href="#">
@@ -65,17 +70,97 @@ export const DashboardView = () => {
                     </span>
                   </div>
                 </div>
-                <nav className="navbar navbar-dark bg-dark">
-                  <div className="container-fluid">
-                  </div>
-                </nav>
+                {/* <D_NavBarView /> */}
               </div>
 
               {/* Content Here */}
+              <div
+                className="row"
+                style={{
+                  marginBottom: 40,
+                }}
+              >
+                <div
+                  className="bg-dark"
+                  style={{
+                    height: 500,
+                    borderBottomLeftRadius: "30px",
+                    borderBottomRightRadius: "30px",
+                    alignContent: "center",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    justifyItems: "center",
+                  }}
+                >
+                  <div className="row">
+                    <div
+                      className="col"
+                      style={{
+                        alignContent: "center",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        justifyItems: "center",
+                      }}
+                    >
+                      <img
+                        src="https://png.pngtree.com/png-vector/20220714/ourmid/pngtree-happy-office-people-success-business-png-image_5870389.png"
+                        alt=""
+                        srcSet=""
+                      />
+                    </div>
+                    <div
+                      className="col"
+                      style={{
+                        alignContent: "center",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        justifyItems: "center",
+                      }}
+                    >
+                      <h1 style={{ color: "white" }}>
+                        Manage Your Content Here
+                      </h1>
+                      <h3 style={{ color: "white" }}>
+                        Lorem, ipsum dolor sit amet{" "}
+                      </h3>
+                      <h4 style={{ color: "white", marginTop: "10px" }}>
+                        {" "}
+                        Lorem, ipsum dolor sit amet consectetur adipisicing
+                        elit. Porro, rem iusto consectetur voluptatum nostrum
+                        sint. consectetur adipisicing elit. Porro, rem iusto
+                        consectetur voluptatum nostrum sint.
+                      </h4>
+                    </div>
+                    <div className="row mt-5">
+                      {link.map((item, key) => (
+                        <div key={key+"fasdfa"} className="col d-flex justify-content-center">
+                          <ButtonWidget
+                            type={"button"}
+                            class={"btn btn-dark"}
+                            size="btn-lg"
+                            text={
+                              <Link  activeClass="active"
+                              to="AboutUs"
+                              spy={true}
+                              smooth={true}
+                              offset={-70} // Adjust for your header height
+                              duration={500}
+                            >{item} </Link>
+                            }
+                            onClick={function (): void {}}
+                            
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-              <D_AboutUsView />
-              <D_CarsVieiw/>    
-              
+              <D_AboutUsView id={"AboutUs"} />
+              <D_CarsVieiw />
+              <D_YoutubeView />
               {/* Content Here */}
             </div>
           </div>
@@ -112,7 +197,11 @@ export const DashboardView = () => {
           </div>
         </div>
       </div>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossOrigin="anonymous"></script>
+      <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossOrigin="anonymous"
+      ></script>
     </div>
   );
 };

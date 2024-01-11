@@ -38,7 +38,6 @@ export const ContactView = () => {
       setSecondSet(secondSetData);
 
 
-
       // console.log("Data fetched:", documentsData);
 
       const contactsCollectionRef: CollectionReference = collection(

@@ -6,6 +6,7 @@ import { CollectionReference, getDocs, query } from "@firebase/firestore";
 // import { app } from "../api/firebase";
 import { DocumentData, QueryDocumentSnapshot, collection, getFirestore } from "firebase/firestore";
 import { app } from "@/app/api/firebase";
+import Service from "@/app/services/Service";
 
 export const FeatureCars: React.FC = () => {
 
@@ -16,28 +17,11 @@ export const FeatureCars: React.FC = () => {
   const fetchData = async () => {
     // console.log("runs");
 
-    try {
-        // Use getFirestore to access Firestore functions
-        const firestore = getFirestore(app);
-        const collectionRef: CollectionReference = collection(
-          firestore,
-          "carsId"
-        );
-        const querySnapshot = await getDocs(query(collectionRef));
-
-        const documentsData = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-
-      setData(documentsData);
-      const firstSetData = documentsData.filter((item) => item.id >= '1' && item.id <= '4');
-      const secondSetData = documentsData.filter((item) => item.id >= '5' && item.id <= '8');
-      setFirstSet(firstSetData);
-      setSecondSet(secondSetData);
-        // console.log("Data fetched:", documentsData);
-    } catch (error) {
-      console.error("Error fetching data:", error);
+    const result = await Service.GET({
+      collectionName: "carsId"
+    })
+    if (result) {
+      setData(result)
     }
   };
 
