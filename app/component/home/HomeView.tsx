@@ -39,19 +39,20 @@ export const HomeView = () => {
     }
   };
 
-  const handleScroll = () => {
+  const onScroll = () => {
     console.log("Scrolled:", window.scrollY);
     setPosition(window.scrollY);
   };
 
   useEffect(() => {
     getCars();
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", onScroll);
     getDescription();
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", onScroll);
     };
   }, [getCars]);
+  
 
   return (
     <>
@@ -64,7 +65,7 @@ export const HomeView = () => {
                 top: 0,
                 left: 0,
                 width: "100%",
-                opacity: position === 0 ? "12%" : "100%",
+                opacity: position >= 759 ? "100%" : "15%",
                 backgroundColor: "black",
               }}
               className="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy scroll"
