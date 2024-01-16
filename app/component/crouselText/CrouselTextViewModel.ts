@@ -4,22 +4,22 @@ import { CollectionReference, collection, getDocs, getFirestore, query } from "f
 import { useEffect, useState } from "react";
 
 export function CrouselViewModel() {
-    const [headers, setHeaders] = useState<ResultTextInterfaceData[]>([]);
-    const getDataHeader = async () => {
-        const result = (await Service.GET({
-            collectionName: "term&condition"
-        })) as ResultTextInterfaceData[]
-        if (result?.length > 0) {
-            setHeaders(result)
-        }
-    };
+    // const [headers, setHeaders] = useState<ResultTextInterfaceData[]>([]);
+    // const getDataHeader = async () => {
+    //     const result = (await Service.GET({
+    //         collectionName: "term&condition"
+    //     })) as ResultTextInterfaceData[]
+    //     if (result?.length > 0) {
+    //         setHeaders(result)
+    //     }
+    // };
 
-    useEffect(() => {
-        getDataHeader();
-        return () => { };
-    }, []);
+    // useEffect(() => {
+    //     getDataHeader();
+    //     return () => { };
+    // }, []);
 
-    return {
-        headers,
-    };
+    // return {
+    //     headers,
+    // };
 }

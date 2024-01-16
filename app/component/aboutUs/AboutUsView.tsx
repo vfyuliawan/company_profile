@@ -1,62 +1,18 @@
 "use client";
 
-import { app } from "@/app/api/firebase";
-import { WebTheme } from "@/app/theme/webTheme";
-import {
-  CollectionReference,
-  DocumentData,
-  collection,
-  getDocs,
-  getFirestore,
-  query,
-} from "firebase/firestore";
-import React from "react";
-import { useEffect, useState } from "react";
 
-interface ParagrafInterface {
-  paragraf1: string;
-  paragraf2?: string;
-  paragraf3?: string;
-  paragraf4?: string;
-}
+import { WebTheme } from "@/app/theme/webTheme";
+
+import React from "react";
+
 
 export const AboutUsView = () => {
-  const [paragraf, setParagraf] = useState<DocumentData[]>([]);
-  const [textParagraf, setTextParagraf] = useState<any>();
-
-   const getParagraf = async () => {
-    try {
-      const firestore = getFirestore(app);
-      const collectionRef: CollectionReference = collection(
-        firestore,
-        "aboutUs"
-      );
-      const querySnapshot = await getDocs(query(collectionRef));
-
-      const documentsData = querySnapshot.docs.map((doc) => {
-        return {
-          ...doc.data(),
-        };
-      });
-      const paragrafArray = Object.values(documentsData);
-      setTextParagraf(paragrafArray);
-      setParagraf(documentsData);
-
-      // console.log("Data fetched:", paragrafArray);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
-  useEffect(() => {
-    getParagraf();
-    return () => {};
-  }, []);
+  
 
   return (
     <section
       id="about-us"
-      style={{ marginTop: 150, backgroundColor: WebTheme.cardGrey5 }}
+      style={{ marginTop: 100, backgroundColor: WebTheme.cardGrey5 }}
     >
       <div
         style={{
@@ -68,40 +24,31 @@ export const AboutUsView = () => {
           display: "flex",
         }}
       >
-        <div className="section-header" style={{ marginTop: 20 }}>
+        <div className="section-header" style={{ marginTop: 20, fontSize: "30px" }}>
           <h2>Tentang Kami</h2>
         </div>
         {/*/.section-header*/}
-        {paragraf[0]?.paragraf1 && (
-          <p style={{ marginTop: 30, marginLeft: "20px" }}>
-            {paragraf[0]?.paragraf1}
-          </p>
-        )}
-        {paragraf[0]?.paragraf2 && (
-          <p style={{ marginTop: 30, marginLeft: "20px" }}>
-            {paragraf[0]?.paragraf2}
-          </p>
-        )}
-        {paragraf[0]?.paragraf3 && (
-          <p style={{ marginTop: 30, marginLeft: "20px" }}>
-            {paragraf[0]?.paragraf3}
-          </p>
-        )}
-        {paragraf[0]?.paragraf4 && (
-          <p style={{ marginTop: 30, marginLeft: "20px" }}>
-            {paragraf[0]?.paragraf4}
-          </p>
-        )}
-        {paragraf[0]?.paragraf5 && (
-          <p style={{ marginTop: 30, marginLeft: "20px" }}>
-            {paragraf[0]?.paragraf5}
-          </p>
-        )}
-        {paragraf[0]?.paragraf6 && (
-          <p style={{ marginTop: 30, marginLeft: "20px" }}>
-            {paragraf[0]?.paragraf6}
-          </p>
-        )}
+        <div style={{  paddingRight:"150px", paddingLeft:"150px",marginTop: 20, marginLeft: "30px", fontSize: "12px" }}>        
+            
+              <p >
+              Selamat datang di website Syadida rent Mobil Semarang, solusi utama bagi Anda yang mencari mobil rental di daerah Semarang, kami berdedikasi untuk selalu memberikan yang terbaik bagi pelanggan kami.
+              </p> 
+                <br/>          
+              <p>
+                Berdiri pada tahun 2011 di Semarang, Perusahaan kami sudah sangat berpengalaman di bidang penyewaan mobil, dengan jaminan mobil yang berkualitas dan nyaman dengan harga yang bersahabat !
+              </p>
+                <br/>            
+              <p>
+                Kami berkomitmen kuat bahwa pada dasarnya jasa kami lah yang menentukan masa depan kelangsungan perusahaan, hal inilah yang menjadikan kami senantiasa berusaha memberikan pelayanan terbaik bagi pelanggan. Dengan harga yang sangat kompetitif kami layani Anda tanpa trik dan rekayasa yang bisa merugikan Anda. Percayakan perjalanan anda khususnya di kotaSemarang, Yogyakarta, Solo, Surabaya, Jakarta, Bali, Malang, Bandung, dan sekitarnya kepada kami dan kami akan berusaha yang terbaik untuk anda.
+              </p>
+                <br/>            
+              <p>
+                Sebagai pelanggan cerdas dalam menentukan sewa mobil, hal yang paling mendasar adalah HARGA MURAH, MOBIL BAGUS DAN TERAWAT, DRIVER HANDAL DAN BERPENGALAMAN!!!!
+              </p>
+            <br/>
+            
+            
+        </div>
       </div>
     </section>
   );
