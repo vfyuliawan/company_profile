@@ -65,7 +65,7 @@ export const HomeView = () => {
                 top: 0,
                 left: 0,
                 width: "100%",
-                opacity: position >= 759 ? "100%" : "15%",
+                opacity: position >= 100 ? "100%" : "15%",
                 backgroundColor: "black",
               }}
               className="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy scroll"
